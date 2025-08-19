@@ -15,10 +15,10 @@ fig1 = go.Figure()
 fig1.add_trace(go.Scatter(x=df['month'], y=df['sales'], name='Sales'))
 fig1.add_trace(go.Scatter(x=df['month'], y=df['profit'], name='Profit'))
 fig1.update_layout(title='Sales vs Profit', xaxis_title='Month', yaxis_title='Amount')
-fig1.write_html("visualizations/chart1.html")
+fig1.write_html("visual/chart1.html")
 
 # Chart 2: Bar chart
 fig2 = px.bar(df, x='month', y='sales', title='Monthly Sales')
-fig2.write_html("visualizations/chart2.html")
+fig2.write_html("visual/chart2.html")
 
 print("Charts generated successfully!")
