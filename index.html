@@ -3,29 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Data Visualizations</title>
+    <title>Visual Analytics Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>My Data Visualizations</h1>
-        <p>Python-generated charts and analysis</p>
+        <h1>Visual Analytics Portfolio</h1>
+        <nav>
+            <button class="tab-btn active" onclick="showTab('about')">About Me</button>
+            <button class="tab-btn" onclick="showTab('visualizations')">Visualizations</button>
+        </nav>
     </header>
 
     <main>
-        <section class="visualization">
-            <h2>Sales Analysis</h2>
-            <iframe src="visualizations/chart1.html" width="100%" height="500px" frameborder="0"></iframe>
-        </section>
+        <div id="about" class="tab-content active">
+            <section class="about-section">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <br>
+                    <p>Hi, I'm Brandon (he/him). I'm in the MS program and I'll be graduating in the spring. I'm working part time at Ally Financial as a SWE intern. I've always enjoyed working with data in almost any capacity. It has been an important part of my education and career. I'm looking forward to improving my visualization skills and building a portfolio in this course.</p>
+                    <br>
+                    <p>I have a wide range of interests and I hardly have time to pursue them all. I love physics and mathematics. I graduated from the MS in applied physics program in 2023 and did research in the physics department for 4+ years. Visualization is an incredibly important part of doing research as it is required for figures. Typically, I used MATLAB to create figures for papers. I'm also comfortable with some popular Python libraries for visualization and data processing like pandas, matplotlib, seaborn, etc. I like to code in my free time. I'm currently making a command line note taking tool in Go to get familiar with the language. I've been playing piano and guitar since I was young. My skill is certainly not proportional to the amount of time I've been playing, but it's a fun creative outlet for me nonetheless :)</p>
+                </div>
+            </section>
+        </div>
 
-        <section class="visualization">
-            <h2>Market Trends</h2>
-            <iframe src="visualizations/chart2.html" width="100%" height="500px" frameborder="0"></iframe>
-        </section>
+        <div id="visualizations" class="tab-content">
+            <section class="visualization">
+                <h2>Test Vis 1</h2>
+                <iframe src="visuals/chart1.html" width="100%" height="500px" frameborder="0"></iframe>
+            </section>
+
+            <section class="visualization">
+                <h2>Test Vis 2</h2>
+                <iframe src="visuals/chart2.html" width="100%" height="500px" frameborder="0"></iframe>
+            </section>
+        </div>
     </main>
 
-    <footer>
-        <p>Generated with Python | <a href="https://github.com/your-username">GitHub</a></p>
-    </footer>
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab and mark button as active
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
