@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visual Analytics Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
     <header>
         <h1>Visual Analytics Portfolio</h1>
         <nav>
             <button class="tab-btn active" onclick="showTab('about')">About Me</button>
-            <button class="tab-btn" onclick="showTab('visualizations')">Visualizations</button>
+            <button class="tab-btn" onclick="showTab('proj1')">Netherlands Sea Level Rise</button>
         </nav>
     </header>
 
@@ -28,33 +28,58 @@
             </section>
         </div>
 
-        <div id="visualizations" class="tab-content">
-            <section class="visualization">
-                <h2>Test Vis 1</h2>
-                <iframe src="visuals/chart1.html" width="100%" height="500px" frameborder="0"></iframe>
-            </section>
-
-            <section class="visualization">
-                <h2>Test Vis 2</h2>
-                <iframe src="visuals/chart2.html" width="100%" height="500px" frameborder="0"></iframe>
+        <div id="proj1" class="tab-content">
+            <section class="project-story">
+                <h2>Mapping the Netherlands' Climate Future</h2>
+                <br>
+                <div class="story-content">
+                    <p>The Netherlands has been in a centuries long battle against the sea. Dutch engineers have drained lakes, built dikes, and literally created land. But what happens when the sea rises? As global temperatures rise, so do sea levels, and for a country where more than a quarter of the land already sits below sea level, this isn't just an environmental issue. It's an existential issue for the nation.</p>
+                    
+                    <h3>A Country Under the Ocean</h3>
+                    <p>To understand what's at stake, we can look at how the Netherlands looks today. The elevation map below reveals large amounts of the country are already underwater, kept dry only by an intricate network of dikes, pumps, and barriers.</p>
+                    
+                    <div class="vis-container">
+                        <img src="visuals/netherlands_current_elevation.png" alt="Netherlands Current Elevation Map" class="full-width-vis">
+                    </div>
+                    
+                    <p>Here's where the story gets concerning. Climate scientists have mapped out how much sea levels will rise based on different paths humanity might take with greenhouse gas emissions. The chart below shows their projections.</p>
+                    
+                    <div class="vis-container">
+                        <img src="visuals/sea_level_rise_projections.png" alt="Sea Level Rise Projections" class="full-width-vis">
+                    </div>
+                    
+                    <p>The blue line represents our best case scenario, aggressive climate action starting now. The red line, however, is the senario that will likely come to pass. By 2100, the Nethrlands is looking at sea level rise between about 0.5 and 1 meter. A few hundred years down the line, that gap widens dramatically: anywhere from 3 to nearly 8 meters higher than today.</p>
+                    
+                    <h3>What does this actually mean for Dutch land?</h3>
+                    <p>The grid below shows nine different futures for the Netherlands, depending on how much seas rise and when.</p>
+                    
+                    <div class="vis-container">
+                        <img src="visuals/flooding_scenarios_mosaic.png" alt="Flooding Scenarios Mosaic" class="full-width-vis">
+                    </div>
+                    
+                    <p>The black areas represent land that remains above water. White areas are the ocean. The red is land lost to rising seas, areas that are dry today but would be underwater in each scenario. Even in the most optimistic scenario for 2100, many coastal areas will have to fight increasingly rising waters. In the worst case scenarios further out, significant portions of the country could be below sea level. The difference between aggressive climate action and business as usual isn't just policy, it is people's land and homes.</p>
+                    
+                    <h3>Why This Matters Beyond the Netherlands</h3>
+                    <p>This isn't just a Dutch story. It's a preview of conversations every coastal region will have this century. Miami, Venice, Jakarta, London, they're all watching rising waters and asking similar questions about their futures.The Netherlands has a thousand-year head start on this problem and some of the world's most advanced flood defenses. They are concerned about rising seas, and the rest of us should be paying attention too.</p>
+                    
+                    <h3>Limitations and Assumptions</h3>
+                    <ul class="limitations-list">
+                        <li><strong>Static Analysis:</strong> This is not a dynamic flood simulation. It simply identifies areas below projected sea levels.</li>
+                        <li><strong>DEM Resolution:</strong> The DEM contains only integer elevation values, requiring extrapolation to longer time periods to show meaningful differences in binary land/sea classification.</li>
+                        <li><strong>No Adaptation:</strong> The analysis assumes no protective infrastructure improvements, dike reinforcements, or managed retreat strategies.</li>
+                        <li><strong>Linear Extrapolation:</strong> Projections beyond 2150 use linear trends and do not account for potential accelerating factors or tipping points.</li>
+                        <li><strong>No Complexities:</strong> Does not model groundwater dynamics, land subsidence, sediment transport, or storm surge amplification.</li>
+                    </ul>
+                </div>
             </section>
         </div>
     </main>
 
-    <script>
-        function showTab(tabName) {
-            // Hide all tab contents
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-            
-            // Remove active class from all buttons
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            // Show selected tab and mark button as active
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-        }
-    </script>
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
